@@ -187,7 +187,7 @@ td,th{padding:13px 16px;border-bottom:1px solid var(--ln);text-align:left}th{bac
 <div class="note dk" style="margin-top:40px;text-align:center"><small>VYENA BRASIL · Versão 1.0 · Novembro de 2026</small>Elegância com alma brasileira</div></div></section>
 <script>document.querySelectorAll('.pt').forEach(e=>{e.style.cssText+=';display:grid;grid-template-columns:repeat(5,1fr);gap:8px 10px;padding:14px;align-content:center;font:500 22px/1 "Cormorant Garamond",serif;text-align:center;background:'+e.dataset.bg+';color:'+e.dataset.fg;e.innerHTML='<svg class="vm" style="width:70%;margin:auto"><use href="#vm"/></svg>'.repeat(25)});</script>
 </main></div>
-<button id="top" onclick="scrollTo({top:0})" aria-label="Topo">↑</button>
+<button id="top" type="button" aria-label="Voltar ao topo">↑</button>
 <script>
 const P=[["Parte I · Diagnóstico",["Resumo executivo","Briefing da marca","Análise do logotipo atual"]],["Parte II · Conceito",["Estratégia e personalidade","Conceito criativo","Rotas criativas","Anatomia do logotipo"]],["Parte III · Sistema",["Sistema de versões","Paleta de cores","Tipografia","Construção e grid","Tamanhos mínimos","Usos incorretos"]],["Parte IV · Aplicação",["Aplicações","Padrão gráfico","Entregáveis"]],["Parte V · Processo",["Processo e cronograma","Critérios de aprovação","Instruções para a equipe","Premissas a validar"]]];
 let n=0,h="";P.forEach(([t,a])=>{h+=`<h4>${t}</h4>`;a.forEach(x=>{n++;h+=`<a href="#s${n}" class=""><i>${String(n).padStart(2,"0")}</i>${x}</a>`})});nav.innerHTML=h;
@@ -207,4 +207,5 @@ const links=[...nav.querySelectorAll("a:not(.off)")],secs=links.map(a=>document.
 function sync(){const cv=document.getElementById("cover");document.getElementById("wrap").parentNode.classList.toggle("shown",true);const y=scrollY+120;let c=-1;secs.forEach((s,i)=>{if(s.offsetTop<=y)c=i});links.forEach((a,i)=>a.classList.toggle("on",i===c))}
 document.body.classList.add("shown");addEventListener("scroll",sync);sync();
 const tm=()=>document.body.classList.toggle("menu"),cm=()=>document.body.classList.remove("menu");document.getElementById("bt").onclick=tm;document.getElementById("sc").onclick=cm;nav.addEventListener("click",cm);addEventListener("keydown",e=>{if(e.key==="Escape")cm()});
+document.getElementById("top").addEventListener("click",e=>{e.preventDefault();try{window.scrollTo({top:0,behavior:"smooth"})}catch(x){window.scrollTo(0,0)}setTimeout(()=>{if(window.scrollY>0||document.documentElement.scrollTop>0){document.documentElement.scrollTop=0;document.body.scrollTop=0}},900)});
 </script></body></html>
